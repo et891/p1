@@ -30,3 +30,4 @@ services:
       BASE_URL: "http://api:8000"
     volumes:
       - ..:/app
+      - ../allure-results:/app/allure-results
