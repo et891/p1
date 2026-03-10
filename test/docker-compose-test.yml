@@ -22,7 +22,7 @@ services:
     working_dir: /app
     command: >
       sh -c "pip install -r requirements-dev.txt &&
-             pytest -sv tests"
+              pytest -sv --alluredir=allure-results"
     depends_on:
       api:
         condition: service_healthy
