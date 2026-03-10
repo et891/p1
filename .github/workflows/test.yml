@@ -14,22 +14,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Clone project (branch v1)
-        run: git clone --branch v1 https://github.com/et891/p1.git
-
       - name: Start test services
         run: docker compose up -d --build
-        working-directory: p1/test
+        working-directory: test
 
       - name: Show logs if failed
         if: failure()
         run: docker compose logs
-        working-directory: p1/test
+        working-directory: test
 
       - name: Stop test services
         if: always()
         run: docker compose down -v
-        working-directory: p1/test
+        working-directory: test
 
   publish-report:
     if: always()
