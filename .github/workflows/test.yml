@@ -1,7 +1,9 @@
 name: Tests
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - test
 
 jobs:
   run-tests:
@@ -35,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Check out gh-pages
         uses: actions/checkout@v4
         with:
           ref: gh-pages
@@ -43,13 +45,11 @@ jobs:
 
       - name: Generate Allure Report with history
         uses: simple-elf/allure-report-action@v1.13
-        if: always()
         with:
           allure_results: allure-results
           allure_history: allure-history
 
       - name: Deploy report to Github Pages
-        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
