@@ -25,7 +25,7 @@ jobs:
 
       - name: Stop test services
         if: always()
-        run: docker compose down -v
+        run: docker compose -f docker-compose-test.yml down -v
         working-directory: test
 
   publish-report:
