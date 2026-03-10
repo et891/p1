@@ -1,10 +1,7 @@
-version: "3.9"
-
 services:
 
   api:
     image: python:3.12-slim
-    container_name: fastapi-app
     working_dir: /app
     command: >
       sh -c "pip install -r requirements.txt &&
@@ -12,9 +9,9 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ..:/app
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/')\""]
       interval: 3s
       timeout: 1s
       retries: 30
@@ -22,16 +19,14 @@ services:
 
   tests:
     image: python:3.12-slim
-    container_name: api-tests
-    working_dir: /tests
+    working_dir: /app
     command: >
       sh -c "pip install -r requirements-dev.txt &&
-             pytest -sv"
+             pytest -sv tests"
     depends_on:
       api:
         condition: service_healthy
     environment:
       BASE_URL: "http://api:8000"
     volumes:
-      - ./tests:/tests
-      - ./requirements-dev.txt:/tests/requirements-dev.txt
+      - ..:/app
