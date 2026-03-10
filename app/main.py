@@ -17,8 +17,8 @@ def root() -> dict[str, str]:
 
 
 @app.get("/tasks", response_model=list[Task])
-def list_tasks() -> list[Task]:
-    return get_all_tasks()
+def list_tasks() -> list[dict[str, str]]:
+    return [{"message": "FastAPI is working"},{"message": "FastAPI is working"}]
 
 
 @app.get("/tasks/{task_id}", response_model=Task)
