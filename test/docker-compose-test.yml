@@ -1,0 +1,32 @@
+services:
+
+  api:
+    image: python:3.12-slim
+    working_dir: /app
+    command: >
+      sh -c "pip install -r requirements.txt &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ..:/app
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/')\""]
+      interval: 3s
+      timeout: 1s
+      retries: 30
+
+
+  tests:
+    image: python:3.12-slim
+    working_dir: /app
+    command: >
+      sh -c "pip install -r requirements-dev.txt &&
+             pytest -sv tests"
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      BASE_URL: "http://api:8000"
+    volumes:
+      - ..:/app

@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="allure-pytest" />
+          <option value="email_validator" />
+          <option value="playwright" />
+          <option value="pydantic" />
+          <option value="pydantic-settings" />
+          <option value="pytest" />
+          <option value="pytest-playwright" />
+          <option value="pytest-rerunfailures" />
+          <option value="pytest-xdist" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
