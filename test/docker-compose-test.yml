@@ -16,13 +16,12 @@ services:
       timeout: 1s
       retries: 30
 
-
   tests:
     image: python:3.12-slim
     working_dir: /app
     command: >
       sh -c "pip install -r requirements-dev.txt &&
-              pytest -sv --alluredir=allure-results"
+             pytest -sv --alluredir=/app/allure-results"
     depends_on:
       api:
         condition: service_healthy
