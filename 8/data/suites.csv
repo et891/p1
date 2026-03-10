@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","5","Complete task","tests","Tue Mar 10 19:07:23 UTC 2026","passed","Tue Mar 10 19:07:23 UTC 2026","TestTasks","test_tasks","",""
+"","2","Create task","tests","Tue Mar 10 19:07:23 UTC 2026","passed","Tue Mar 10 19:07:23 UTC 2026","TestTasks","test_tasks","",""
+"","3","Delete task","tests","Tue Mar 10 19:07:23 UTC 2026","passed","Tue Mar 10 19:07:23 UTC 2026","TestTasks","test_tasks","",""
+"","5","Check API root endpoint","tests","Tue Mar 10 19:07:23 UTC 2026","passed","Tue Mar 10 19:07:23 UTC 2026","TestTasks","test_tasks","",""
+"","2","Get tasks list","tests","Tue Mar 10 19:07:23 UTC 2026","passed","Tue Mar 10 19:07:23 UTC 2026","TestTasks","test_tasks","",""
